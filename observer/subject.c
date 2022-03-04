@@ -10,9 +10,7 @@ static void _destroy(Subject* this)
 
 static int _registerObserver(Subject* this, Observer* observer)
 {
-	int i = 0;
-
-	for (; i < MAX_OBSERVERS; i++) {
+	for (int i =0; i < MAX_OBSERVERS; i++) {
 		if (this->observers[i] == NULL) {
 			this->observers[i] = observer;
 
@@ -26,9 +24,7 @@ static int _registerObserver(Subject* this, Observer* observer)
 
 static int _unregisterObserver(Subject *this, Observer* observer)
 {
-	int i = 0;
-
-	for (; i < MAX_OBSERVERS; i++) {
+	for (int i = 0; i < MAX_OBSERVERS; i++) {
 		void* pObserver = this->observers[i];
 
 		if (observer == pObserver) {
@@ -42,9 +38,7 @@ static int _unregisterObserver(Subject *this, Observer* observer)
 
 static void _notifyObservers(Subject* this)
 {
-	int i = 0;
-
-	for (; i < MAX_OBSERVERS; i++) {
+	for (int i=0; i < MAX_OBSERVERS; i++) {
 		if (this->observers[i] != NULL) {
 			this->observers[i]->notify(this->observers[i], this->type, this->impl);
 		}

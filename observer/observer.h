@@ -1,9 +1,7 @@
 #ifndef OBSERVER_H
 	#define OBSERVER_H
-	#include "common.h"
-	/**
-	 * Defining a 'interface-a-like' for the observer
-	 */
+	#include "exit.h"
+
 
 	typedef struct __observer {
 		/**
@@ -25,13 +23,6 @@
 		void (*notifyImpl)(void*, int, void*);
 	} Observer;
 
-
-	/**
-	 * Constructor, allocate memory and set up credentials.
-	 * @param vendor name of the observer manufacturer
-	 * @param serial serial number
-	 * @return an instance of Observer
-	 */
 	Observer * observerNew(void*, void (*)(void*, int, void*));
 
 #endif

@@ -2,10 +2,6 @@
 	#define SUBJECT_H
 	#include "observer.h"
 
-	/**
-	 * The interface for the subject
-	 */
-
 	typedef struct __subject
 	{
 		int type;
