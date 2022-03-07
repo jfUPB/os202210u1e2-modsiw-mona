@@ -10,17 +10,17 @@ static void _destroy(Observer* this)
 
 static void _notify(Observer *this, int type, void * subject)
 {
-	this->notifyImpl(this->impl, type, subject);
+	this->notificarImpl(this->impl, type, subject);
 }
 
 Observer* observerNew(void* impl, void (*notifyImpl)(void*, int, void*))
 {
 	Observer* this = (Observer *) malloc(sizeof(*this));
 
-	this->destroy = _destroy;
-	this->notify = _notify;
+	this->destruir = _destroy;
+	this->notificar = _notify;
 	this->impl = impl;
-	this->notifyImpl = (void (*)(void*, int, void*)) notifyImpl;
+	this->notificarImpl = (void (*)(void*, int, void*)) notifyImpl;
 
 	return this;
 }
