@@ -7,10 +7,10 @@
 static void _noticiaNueva(Mail* this)
 {
   printf("%s\n", "Noticia de ultima hora");
-  printf("%s\n", this->name);
+  printf("%s\n", this->titulo);
 
 	this->event = NOTICIANUEVA;
-	this->subject->notifyObservers(this->subject);
+	this->subject->notificarObservador(this->subject);
 }
 
 static void _destruir(Mail* this)
@@ -28,12 +28,12 @@ static MailEvent _getEvento(Mail* this)
 	return this->event;
 }
 
-static int _subscribirObservador(Mail* this, Observer* observer) {
-  return this->subject->subscribirObservador(this->subject, observer);
+static int _suscribirObservador(Mail* this, Observer* observer) {
+  return this->subject->suscribirObservador(this->subject, observer);
 }
 
-static int _desubscribirObservador(Mail * this, Observer* observer) {
-  return this->subject-> desubscribirObservador(this->subject, observer);
+static int _desuscribirObservador(Mail * this, Observer* observer) {
+  return this->subject-> desuscribirObservador(this->subject, observer);
 }
 
 Mail* CrearMail(char * titulo)
@@ -45,8 +45,8 @@ Mail* CrearMail(char * titulo)
 	this->noticiaNueva = _noticiaNueva;
 
 	this->subject = subjectNew(this, 1);
-	this->subscribirObservador = _subscribirObservador;
-	this->desubscribirObservador = _desubscribirObservador;
+	this->suscribirObservador = _suscribirObservador;
+	this->desuscribirObservador = _desuscribirObservador;
 
 	return this;
 }

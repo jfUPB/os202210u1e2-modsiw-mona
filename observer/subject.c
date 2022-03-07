@@ -1,6 +1,6 @@
 #include "subject.h"
 
-static void _destroy(Subject* this)
+static void _destruir(Subject* this)
 {
 	if (this != NULL) {
 		free(this);
@@ -8,7 +8,7 @@ static void _destroy(Subject* this)
 	}
 }
 
-static int _registerObserver(Subject* this, Observer* observer)
+static int _subscribirObservador(Subject* this, Observer* observer)
 {
 	for (int i =0; i < MAX_OBSERVERS; i++) {
 		if (this->observers[i] == NULL) {
@@ -22,7 +22,7 @@ static int _registerObserver(Subject* this, Observer* observer)
 	return KO;
 }
 
-static int _unregisterObserver(Subject *this, Observer* observer)
+static int _desubscribirObservador(Subject *this, Observer* observer)
 {
 	for (int i = 0; i < MAX_OBSERVERS; i++) {
 		void* pObserver = this->observers[i];
@@ -36,11 +36,11 @@ static int _unregisterObserver(Subject *this, Observer* observer)
 	return KO;
 }
 
-static void _notifyObservers(Subject* this)
+static void _notificarObservador(Subject* this)
 {
 	for (int i=0; i < MAX_OBSERVERS; i++) {
 		if (this->observers[i] != NULL) {
-			this->observers[i]->notify(this->observers[i], this->type, this->impl);
+			this->observers[i]->notificar(this->observers[i], this->type, this->impl);
 		}
 	}
 }
@@ -49,12 +49,12 @@ Subject * subjectNew(void* impl, int type)
 {
 	Subject* this = (Subject *) malloc(sizeof(*this));
 
-	this->destroy = _destroy;
+	this->destruir = _destruir;
 	this->impl = impl;
 	this->type = type;
-	this->registerObserver = _registerObserver;
-	this->unregisterObserver = _unregisterObserver;
-	this->notifyObservers = _notifyObservers;
+	this->suscribirObservador = _subscribirObservador;
+	this->desuscribirObservador = _desubscribirObservador;
+	this->notificarObservador = _notificarObservador;
 
 	return this;
 }
