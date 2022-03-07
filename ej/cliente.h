@@ -2,7 +2,7 @@
 	#define CLIENTE_H
  	#include <stdio.h>
 	#include <stdlib.h>
-	#include "../../observer/observer.h"
+	#include "../observer/observer.h"
 	#include "mail.h"
 
 	typedef struct __cliente

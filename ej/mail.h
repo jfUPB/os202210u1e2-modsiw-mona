@@ -2,8 +2,8 @@
   #define MAIL_H
   #include <stdio.h>
   #include <stdlib.h>
-  #include "../../observer/observer.h"
-  #include "../../observer/subject.h"
+  #include "../observer/observer.h"
+  #include "../observer/subject.h"
 
   typedef enum __mail_event
   {

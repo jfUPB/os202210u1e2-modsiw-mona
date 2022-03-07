@@ -6,7 +6,7 @@
 
 static void _noticiaNueva(Mail* this)
 {
-  printf("%s\n", "Noticia de ultima hora");
+  printf("%s", "Noticia de ultima hora de:");
   printf("%s\n", this->titulo);
 
 	this->event = NOTICIANUEVA;
